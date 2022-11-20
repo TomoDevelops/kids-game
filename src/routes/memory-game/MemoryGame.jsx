@@ -1,17 +1,9 @@
 import { useEffect, useState } from "react";
-import "./App.css";
-import SingleCard from "./components/SingleCard";
+import SingleCard from "../../components/memory-game/SingleCard";
+import GAME_DATA from "../../data/gameData";
+import "./MemoryGame.css";
 
-const CARD_IMG = [
-    { src: require("./assets/img/dog.png"), matched: false },
-    { src: require("./assets/img/cat.png"), matched: false },
-    { src: require("./assets/img/bird.png"), matched: false },
-    { src: require("./assets/img/dinosaur.png"), matched: false },
-    { src: require("./assets/img/dolphin.png"), matched: false },
-    { src: require("./assets/img/penguin.png"), matched: false },
-];
-
-function App() {
+const MemoryGame = () => {
     const [cards, setCards] = useState([]);
     const [turns, setTurns] = useState(0);
     const [choiceOne, setChoiceOne] = useState(null);
@@ -20,7 +12,10 @@ function App() {
 
     // Shuffle Cards
     const shuffleCards = () => {
-        const shuffledCards = [...CARD_IMG, ...CARD_IMG]
+        const shuffledCards = [
+            ...GAME_DATA["memory-game"],
+            ...GAME_DATA["memory-game"],
+        ]
             .sort(() => Math.random() - 0.5)
             .map((card) => ({ ...card, id: Math.random() }));
 
@@ -72,7 +67,7 @@ function App() {
     }, []);
 
     return (
-        <div className="App">
+        <div className="game-board">
             <h1>かーど あわせ げーむ</h1>
             <button onClick={shuffleCards}>はじめから</button>
 
@@ -94,6 +89,6 @@ function App() {
             <p>えらんだ かいすう: {turns}かい</p>
         </div>
     );
-}
+};
 
-export default App;
+export default MemoryGame;

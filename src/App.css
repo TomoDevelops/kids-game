@@ -1,33 +1,5 @@
-.App {
-    max-width: 350px;
-    margin: 40px auto;
-    position: relative;
-}
-
-h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-}
-
-button {
-    background: rgb(0, 110, 255);
-    border: 2px solid rgb(50, 50, 50);
-    padding: 6px 12px;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 2rem;
-}
-
-
-p {
-    font-size: 2rem;
-    margin-top: 30px;
-}
-
-.card-grid {
-    margin-top: 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 20px;
+.home-icon {
+  margin-top: 20px;
+  height: 35px;
+  width: 35px;
 }

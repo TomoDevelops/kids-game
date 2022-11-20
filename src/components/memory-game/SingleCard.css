@@ -3,7 +3,7 @@
 }
 
 .card img {
-  background: lightgreen;
+  background: rgb(173, 233, 173);
   border: 2px solid #505050;
   border-radius: 8px;
   display: block;

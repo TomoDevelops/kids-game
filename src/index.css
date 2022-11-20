@@ -1,6 +1,6 @@
 @font-face {
     font-family: "kodomo";
-    src: url("./assets/fonts/KodomoRounded.otf");
+    src: url("./assets/fonts/KodomoRounded-Light.otf");
 }
 
 * {
@@ -16,11 +16,26 @@ html {
 }
 
 body {
+    background-image: url('./assets/img/background.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     text-align: center;
-    background-color: #fffd63;
     overscroll-behavior-y: contain;
+    min-height: 100vh;
 }
 
 img {
     height: 100%;
+}
+
+.game-board {
+    max-width: 350px;
+    margin: 15px auto;
+    position: relative;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
 }

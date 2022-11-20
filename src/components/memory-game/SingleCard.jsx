@@ -14,7 +14,7 @@ const SingleCard = ({ card, handleChoice, flipped, disabled, complete }) => {
                 <img
                     className="back"
                     onClick={handleClick}
-                    src={require("../assets/img/card-back.png")}
+                    src={require("../../assets/img/card-back.png")}
                     alt="Card back"
                 />
             </div>
