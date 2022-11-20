@@ -1,13 +1,26 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+    font-family: "kodomo";
+    src: url("./assets/fonts/KodomoRounded.otf");
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "kodomo";
+    font-size: 62.5%;
+}
+
+html {
+    color: rgb(50, 50, 50);
+}
+
+body {
+    text-align: center;
+    background-color: #fffd63;
+    overscroll-behavior-y: contain;
+}
+
+img {
+    height: 100%;
 }
