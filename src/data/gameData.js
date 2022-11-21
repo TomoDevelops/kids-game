@@ -1,8 +1,10 @@
 const GAME_DATA = {
-    "game-sound": [
-        { type: "correct", audio: require("../assets/audio/correct.mp3") },
-        { type: "wrong", audio: require("../assets/audio/wrong.mp3") },
-    ],
+    "game-data": {
+        correct: require("../assets/audio/correct.mp3"),
+        wrong: require("../assets/audio/wrong.mp3"),
+        goodJob: require("../assets/audio/good-job.mp3"),
+        goodJobGif: require("../assets/img/good-job.gif"),
+    },
     "memory-game": [
         { src: require("../assets/img/dog.png"), matched: false },
         { src: require("../assets/img/cat.png"), matched: false },
