@@ -1,13 +1,13 @@
-import "./SingleNumCard.css";
+import { NumCard } from "./SingleNumCard.styled";
 
 const SingleNumCard = ({ number, handleChoice, selected }) => {
     const handleClick = () => {
         handleChoice(number);
     };
     return (
-        <div className={`num-card ${selected ? `selected` : ``}`}>
+        <NumCard className={selected ? "selected" : ""}>
             <img src={number.img} onClick={handleClick} alt="Card number" />
-        </div>
+        </NumCard>
     );
 };
 

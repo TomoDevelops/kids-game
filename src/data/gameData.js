@@ -5,6 +5,10 @@ const GAME_DATA = {
         goodJob: require("../assets/audio/good-job.mp3"),
         goodJobGif: require("../assets/img/good-job.gif"),
     },
+    "game-title": {
+        "memory-game": "かーど あわせ げーむ",
+        "number-game": "すうじ あて げーむ",
+    },
     "memory-game": [
         { src: require("../assets/img/dog.png"), matched: false },
         { src: require("../assets/img/cat.png"), matched: false },

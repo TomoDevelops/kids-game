@@ -1,6 +1,10 @@
 import GAME_DATA from "../../data/gameData";
 
-import "./EndScreen.css";
+import {
+    StyledEndScreen,
+    EndScreenImg,
+    EndScreenButton,
+} from "./EndScreen.styled";
 
 const EndScreen = ({ restart }) => {
     const handleClick = () => {
@@ -8,13 +12,15 @@ const EndScreen = ({ restart }) => {
     };
 
     return (
-        <div className="end-screen">
-            <img
+        <StyledEndScreen>
+            <EndScreenImg
                 src={GAME_DATA["game-data"].goodJobGif}
                 alt="Animated gif of dog giving good job"
             />
-            <button onClick={handleClick}>もう いっかい</button>
-        </div>
+            <EndScreenButton onClick={handleClick}>
+                もう いっかい
+            </EndScreenButton>
+        </StyledEndScreen>
     );
 };
 

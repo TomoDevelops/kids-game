@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 
-import SingleNumCard from "../../components/number-game/SingleNumCard";
-import EndScreen from "../../components/shared-components/EndScreen";
 import GAME_DATA from "../../data/gameData";
+import SingleNumCard from "../../components/number-game/SingleNumCard";
+import GameBoard from "../../components/shared-components/GameBoard";
+import CardGrid from "../../components/shared-components/CardGrid";
+import EndScreen from "../../components/shared-components/EndScreen";
 
-import "./NumberGame.css";
+import { PlayButton } from "./NumberGame.styled";
 
 const NumberGame = () => {
     const [numbers, setNumbers] = useState([]);
@@ -80,31 +82,30 @@ const NumberGame = () => {
     };
 
     return (
-        <div className="game-board">
-            <h1>すうじ あて げーむ</h1>
-
-            <button className="play-button" onClick={play}>
-                <img
-                    src={require(`../../assets/img/play.png`)}
-                    alt="Play button"
-                />
-            </button>
-
+        <GameBoard gameTitle={GAME_DATA["game-title"]["number-game"]}>
             {completed ? (
                 <EndScreen restart={shuffleNumbers} />
             ) : (
-                <div className="card-grid">
-                    {numbers.map((number) => (
-                        <SingleNumCard
-                            key={number.id}
-                            number={number}
-                            handleChoice={handleChoice}
-                            selected={number === userChoice}
+                <>
+                    <PlayButton onClick={play}>
+                        <img
+                            src={require(`../../assets/img/play.png`)}
+                            alt="Play button"
                         />
-                    ))}
-                </div>
+                    </PlayButton>
+                    <CardGrid>
+                        {numbers.map((number) => (
+                            <SingleNumCard
+                                key={number.id}
+                                number={number}
+                                handleChoice={handleChoice}
+                                selected={number === userChoice}
+                            />
+                        ))}
+                    </CardGrid>
+                </>
             )}
-        </div>
+        </GameBoard>
     );
 };
 

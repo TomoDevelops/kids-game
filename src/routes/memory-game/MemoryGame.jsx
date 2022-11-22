@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import SingleCard from "../../components/memory-game/SingleCard";
 import GAME_DATA from "../../data/gameData";
+import GameBoard from "../../components/shared-components/GameBoard";
+import CardGrid from "../../components/shared-components/CardGrid";
 import EndScreen from "../../components/shared-components/EndScreen";
 
-import "./MemoryGame.css";
+import { Turns } from "./MemoryGame.styled";
 
 const MemoryGame = () => {
     const [cards, setCards] = useState([]);
@@ -72,7 +74,6 @@ const MemoryGame = () => {
         setChoiceTwo(null);
         setTurns((prevTurns) => prevTurns + 1);
         setDisabled(false);
-        console.log(correct);
     };
 
     // start a new game automatically
@@ -81,14 +82,12 @@ const MemoryGame = () => {
     }, []);
 
     return (
-        <div className="game-board">
-            <h1>かーど あわせ げーむ</h1>
-
+        <GameBoard gameTitle={GAME_DATA["game-title"]["memory-game"]}>
             {completed ? (
                 <EndScreen restart={shuffleCards} />
             ) : (
                 <>
-                    <div className="card-grid">
+                    <CardGrid>
                         {cards.map((card) => (
                             <SingleCard
                                 key={card.id}
@@ -102,11 +101,11 @@ const MemoryGame = () => {
                                 disabled={disabled}
                             />
                         ))}
-                    </div>
-                    <p>えらんだ かいすう: {turns}かい</p>
+                    </CardGrid>
+                    <Turns>えらんだ かいすう: {turns}かい</Turns>
                 </>
             )}
-        </div>
+        </GameBoard>
     );
 };
 

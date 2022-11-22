@@ -1,4 +1,4 @@
-import "./SingleCard.css";
+import { Card, Front, Back } from "./SingleCard.styled";
 
 const SingleCard = ({ card, handleChoice, flipped, disabled }) => {
     const handleClick = () => {
@@ -8,17 +8,16 @@ const SingleCard = ({ card, handleChoice, flipped, disabled }) => {
     };
 
     return (
-        <div className="card">
+        <Card>
             <div className={flipped ? "flipped" : ""}>
-                <img className="front" src={card.src} alt="Card front" />
-                <img
-                    className="back"
+                <Front src={card.src} alt="Card front" />
+                <Back
                     onClick={handleClick}
                     src={require("../../assets/img/card-back.png")}
                     alt="Card back"
                 />
             </div>
-        </div>
+        </Card>
     );
 };
 

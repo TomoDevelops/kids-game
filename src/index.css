@@ -35,13 +35,6 @@ img {
     height: 100%;
 }
 
-.game-board {
-    max-width: 350px;
-    margin: 15px auto;
-    position: relative;
-}
-
 h1 {
     font-size: 3rem;
-    margin-bottom: 20px;
 }
