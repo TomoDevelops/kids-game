@@ -1,59 +1,59 @@
 import { useEffect, useState } from "react";
 
 import GAME_DATA from "../../data/gameData";
-import SingleNumCard from "../../components/number-game/SingleNumCard";
 import GameBoard from "../../components/shared-components/GameBoard";
 import CardGrid from "../../components/shared-components/CardGrid";
+import SingleShapeCard from "../../components/shape-game/SingleShapeCard";
 import EndScreen from "../../components/shared-components/EndScreen";
 
-import { PlayButton } from "./NumberGame.styled";
+import { PlayButton } from "./ShapeGame.styled";
 
-const NumberGame = () => {
-    const [numbers, setNumbers] = useState([]);
+const ShapeGame = () => {
+    const [shapes, setShapes] = useState([]);
+    const [question, setQuestions] = useState([]);
     const [userChoice, setUserChoice] = useState(null);
-    const [currentQuestion, setCurrentQuestion] = useState(null);
     const [correct, setCorrect] = useState(-1);
     const [completed, setCompleted] = useState(false);
 
-    // Shuffle game data
-    const shuffleNumbers = () => {
-        // Shuffles numbers from data to display randomized card on game board
-        const shuffledNumbers = [...GAME_DATA["number-game"]]
+    // Shuffle shapes array
+    const shuffleShapes = () => {
+        // Shuffles shapes from data to display randomized card on game board
+        const shuffledShapes = [...GAME_DATA["shape-game"]]
             .sort(() => Math.random() - 0.5)
             .map((card) => ({ ...card, id: Math.random() }));
 
-        // Shuffles numbers from data again to randomize numbers for question
-        const questionNumbers = [...shuffledNumbers].sort(
+        // Shuffles shapes from data again to randomize numbers for question
+        const questionShapes = [...shuffledShapes].sort(
             () => Math.random() - 0.5
         );
 
-        setNumbers(shuffledNumbers);
-        setCurrentQuestion(questionNumbers);
+        setShapes(shuffledShapes);
+        setQuestions(questionShapes);
         setCorrect(0);
         setCompleted(false);
         setUserChoice(null);
     };
 
     // Set selected card to userChoice
-    const handleChoice = (number) => {
-        setUserChoice(number);
+    const handleChoice = (shape) => {
+        setUserChoice(shape);
     };
 
     // Initiate game on load
     useEffect(() => {
-        shuffleNumbers();
+        shuffleShapes();
     }, []);
 
-    // Compare selected number and question number
+    // Compare selected shape and question shape
     useEffect(() => {
         if (userChoice) {
-            if (userChoice.type === currentQuestion[correct].type) {
+            if (userChoice.type === question[correct].type) {
                 setTimeout(() => {
                     playGameSound("correct");
                     resetTurn();
                     setCorrect((prevCorrect) => prevCorrect + 1);
                     setTimeout(() => {
-                        if (correct === 9) {
+                        if (correct === 7) {
                             setCompleted(true);
                             playGameSound("goodJob");
                         }
@@ -75,7 +75,7 @@ const NumberGame = () => {
 
     // Function to play sound
     const play = () => {
-        new Audio(currentQuestion[correct].audio).play();
+        new Audio(question[correct].audio).play();
     };
 
     const playGameSound = (sound) => {
@@ -84,7 +84,7 @@ const NumberGame = () => {
 
     // Play the sound automatically
     useEffect(() => {
-        if (correct >= 0 && correct < 10) {
+        if (correct >= 0 && correct < 8) {
             setTimeout(() => {
                 play();
             }, 1000);
@@ -92,9 +92,9 @@ const NumberGame = () => {
     }, [correct]);
 
     return (
-        <GameBoard gameTitle={GAME_DATA["game-title"]["number-game"]}>
+        <GameBoard gameTitle={GAME_DATA["game-title"]["shape-game"]}>
             {completed ? (
-                <EndScreen restart={shuffleNumbers} />
+                <EndScreen restart={shuffleShapes} />
             ) : (
                 <>
                     <PlayButton onClick={play}>
@@ -104,12 +104,12 @@ const NumberGame = () => {
                         />
                     </PlayButton>
                     <CardGrid>
-                        {numbers.map((number) => (
-                            <SingleNumCard
-                                key={number.id}
-                                number={number}
+                        {shapes.map((shape) => (
+                            <SingleShapeCard
+                                key={shape.id}
+                                shape={shape}
                                 handleChoice={handleChoice}
-                                selected={number === userChoice}
+                                selected={shape === userChoice}
                             />
                         ))}
                     </CardGrid>
@@ -119,4 +119,4 @@ const NumberGame = () => {
     );
 };
 
-export default NumberGame;
+export default ShapeGame;
